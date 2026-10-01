@@ -34,6 +34,6 @@
     COPY --from=builder /app/next.config.* ./
     COPY --from=builder /app/.env ./
     
-    EXPOSE 5186
+    EXPOSE 5196
     
     CMD ["npm", "start"]

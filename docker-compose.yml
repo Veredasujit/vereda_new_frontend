@@ -1,20 +1,20 @@
 version: "3.9"
 
 services:
-  verdaskills-frontend:
-    container_name: verdaskills-frontend
+  verdanew-frontend:
+    container_name: verdanew-frontend
     build:
       context: .
       dockerfile: Dockerfile
 
     ports:
-      - "5186:5186"
+      - "5196:5196"
 
     restart: unless-stopped
 
     environment:
       NODE_ENV: production
-      PORT: 5186
+      PORT: 5196
 
     env_file:
       - .env
