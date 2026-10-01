@@ -1,0 +1,24 @@
+# Node modules
+node_modules
+npm-debug.log
+yarn-error.log
+pnpm-lock.yaml
+
+# Local environment files
+
+
+# Next.js build output
+.next
+out
+dist
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Docker files themselves (optional)
+Dockerfile*
+docker-compose*.yml

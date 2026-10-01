@@ -1,0 +1,105 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+/* Brand colours (unchanged) + derived shades used by the design system in src/ui */
+@theme {
+  --color-primary: #101AC9;
+  --color-secondary: #1055C9;
+  --color-accent: #10B981;
+  --color-background: #108FC9;
+
+  /* shades of the primary brand blue */
+  --color-brand-50: #EEF0FF;
+  --color-brand-100: #DFE3FF;
+  --color-brand-200: #C2C9FD;
+  --color-brand-300: #98A3F8;
+  --color-brand-400: #6371EE;
+  --color-brand-500: #3442DD;
+  --color-brand-600: #101AC9;
+  --color-brand-700: #0E16A3;
+  --color-brand-800: #0F1580;
+  --color-brand-900: #0D1260;
+
+  /* text + surfaces */
+  --color-ink: #0B1020;
+  --color-ink-2: #3D4256;
+  --color-ink-3: #6B7086;
+  --color-surface: #F6F7FB;
+  --color-line: #E6E8F0;
+
+  --shadow-soft: 0 1px 2px rgb(11 16 32 / 0.04), 0 4px 16px -4px rgb(11 16 32 / 0.06);
+  --shadow-lift: 0 2px 4px rgb(11 16 32 / 0.04), 0 18px 40px -12px rgb(16 26 201 / 0.18);
+  --shadow-glow: 0 10px 30px -10px rgb(16 26 201 / 0.55);
+
+  --animate-marquee: marquee 40s linear infinite;
+  --animate-float-slow: float-slow 9s ease-in-out infinite;
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@keyframes float-slow {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50% { transform: translate3d(0, -10px, 0); }
+}
+
+@layer base {
+  html { scroll-behavior: smooth; }
+  body {
+    color: var(--color-ink);
+    background: #fff;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  ::selection { background: var(--color-brand-100); color: var(--color-brand-900); }
+  :focus-visible { outline: 2px solid var(--color-brand-500); outline-offset: 2px; border-radius: 6px; }
+}
+
+@layer utilities {
+  /* page container */
+  .container-x { width: 100%; max-width: 80rem; margin-inline: auto; padding-inline: 1rem; }
+  @media (min-width: 640px) { .container-x { padding-inline: 1.5rem; } }
+  @media (min-width: 1024px) { .container-x { padding-inline: 2rem; } }
+
+  /* soft brand light behind hero sections */
+  .bg-mesh {
+    background:
+      radial-gradient(60rem 30rem at 85% -10%, rgb(16 85 201 / 0.12), transparent 60%),
+      radial-gradient(40rem 24rem at -5% 10%, rgb(16 26 201 / 0.08), transparent 60%),
+      #fff;
+  }
+  /* faint grid used in heroes and dark bands */
+  .bg-grid {
+    background-image:
+      linear-gradient(to right, rgb(11 16 32 / 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(11 16 32 / 0.05) 1px, transparent 1px);
+    background-size: 44px 44px;
+    mask-image: radial-gradient(ellipse at center, #000 30%, transparent 75%);
+  }
+  .bg-grid-dark {
+    background-image:
+      linear-gradient(to right, rgb(255 255 255 / 0.06) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(255 255 255 / 0.06) 1px, transparent 1px);
+    background-size: 44px 44px;
+    mask-image: radial-gradient(ellipse at center, #000 30%, transparent 75%);
+  }
+  .text-gradient-brand {
+    background: linear-gradient(90deg, #101AC9, #1055C9 60%, #3B82F6);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .bg-brand-gradient { background-image: linear-gradient(135deg, #101AC9 0%, #1055C9 100%); }
+  .scrollbar-none { scrollbar-width: none; }
+  .scrollbar-none::-webkit-scrollbar { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
